@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SphereRun : MonoBehaviour
+public class SphereMove : MonoBehaviour
 {
     private Vector3 _startPosition;
     private bool _isFinish;
@@ -10,12 +8,12 @@ public class SphereRun : MonoBehaviour
     [SerializeField] Vector3 _targetPosition;
     [SerializeField] private float _speed;
 
-    void Start()
+    private void Start()
     {
         _startPosition = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
         if (_isFinish == false)
         {

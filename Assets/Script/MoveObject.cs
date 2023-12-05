@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SphereMove : MonoBehaviour
+public class MoveObject : MonoBehaviour
 {
     private Vector3 _startPosition;
     private bool _isFinish;

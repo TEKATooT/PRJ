@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.13273524, g: 0.14210281, b: 0.13252367, a: 1}
+  m_IndirectSpecularColor: {r: 0.13273486, g: 0.14210251, b: 0.13252334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -635,6 +635,8 @@ GameObject:
   - component: {fileID: 881026773}
   - component: {fileID: 881026772}
   - component: {fileID: 881026771}
+  - component: {fileID: 881026779}
+  - component: {fileID: 881026778}
   - component: {fileID: 881026776}
   m_Layer: 0
   m_Name: Cube (2)
@@ -759,6 +761,34 @@ MonoBehaviour:
   _increaseSpeed: 0.25
   _targetAngle: {x: 0, y: 1, z: 0}
   _needSize: {x: 10, y: 10, z: 10}
+--- !u!114 &881026778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881026770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afac448fd264a34690818b393c7657b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetAngle: {x: 0, y: 1, z: 0}
+  _speed: 100
+--- !u!114 &881026779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881026770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff36f9b37f9d5494ab6cca6b360858a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _increaseSpeed: 1
+  _needSize: {x: 3, y: 3, z: 3}
 --- !u!1 &887721798
 GameObject:
   m_ObjectHideFlags: 0

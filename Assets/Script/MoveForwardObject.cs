@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeRun : MonoBehaviour
+public class MoveForwardObject : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _rotateSpeed;
@@ -11,9 +11,5 @@ public class CubeRun : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-
-        transform.Rotate(_targetAngle, _rotateSpeed * Time.deltaTime);
-
-        transform.localScale = Vector3.MoveTowards(transform.localScale, _needSize, _increaseSpeed * Time.deltaTime);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CubeRotate : MonoBehaviour
+public class RotateObject : MonoBehaviour
 {
     [SerializeField] Vector3 _targetAngle;
     [SerializeField] private float _speed;

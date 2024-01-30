@@ -3,8 +3,8 @@ using DG.Tweening;
 
 public class ObjectRotate : MonoBehaviour
 {
-    [SerializeField] Vector3 _toAngle;
-    [SerializeField] float _rotateSpeed;
+    [SerializeField] private Vector3 _toAngle;
+    [SerializeField] private float _rotateSpeed;
 
     private void Start()
     {

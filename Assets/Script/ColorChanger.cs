@@ -2,9 +2,9 @@ using UnityEngine;
 using DG.Tweening;
 
 [RequireComponent(typeof(Renderer))]
-public class ColorChencher : MonoBehaviour
+public class ColorChanger : MonoBehaviour
 {
-    [SerializeField] float _chencherSpeed;
+    [SerializeField] private float _speed;
     [SerializeField] private Color _needColor = Color.green;
     [SerializeField] private Renderer _renderer;
 
@@ -12,6 +12,6 @@ public class ColorChencher : MonoBehaviour
     {
         _renderer = GetComponent<Renderer>();
 
-        _renderer.material.DOColor(_needColor, _chencherSpeed);
+        _renderer.material.DOColor(_needColor, _speed);
     }
 }

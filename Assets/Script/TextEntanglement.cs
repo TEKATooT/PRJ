@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TextEntanglement : MonoBehaviour
 {
     [SerializeField] private Text _text;
-    [SerializeField] float _textScramble;
+    [SerializeField] private float _textScramble;
 
     private void Start()
     {

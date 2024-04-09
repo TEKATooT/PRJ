@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] Cube _cube;
+    [SerializeField] private Cube _cube;
 
-    public void CubeSpawned()
+    public void CubeSpawn()
     {
         Instantiate(_cube, transform.position, Quaternion.identity);
     }

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Controll : MonoBehaviour
+public class CarouselsManagement : MonoBehaviour
 {
-    [SerializeField] Swing _swing;
-    [SerializeField] Catapult _catapult;
-    [SerializeField] Spawner _spawner;
+    [SerializeField] private Swing _swing;
+    [SerializeField] private Catapult _catapult;
+    [SerializeField] private Spawner _spawner;
 
     private void Update()
     {
@@ -21,7 +21,7 @@ public class Controll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             _catapult.Reload();
-            _spawner.CubeSpawned();
+            _spawner.CubeSpawn();
         }
     }
 }

@@ -39,13 +39,13 @@ public class Cube : MonoBehaviour
     {
         if (Random.Range(0f, _fullChance) <= _disintegrationChance)
         {
-            Disintegration();
+            Disintegrate();
         }
 
         Destroy(gameObject);
     }
 
-    private void Disintegration()
+    private void Disintegrate()
     {
         int minPiecesQuantity = 2;
         int maxPiecesQuantity = 5;

@@ -23,38 +23,26 @@ public class Cube : MonoBehaviour
         _renderer.material.color = Random.ColorHSV();
     }
 
-    public void GetDisintegrationChance(float disintegrationChance)
+    public void GetNewCondition(float disintegrationChance)
     {
         _disintegrationChance = disintegrationChance;
+
+        transform.localScale /= _half;
     }
 
     private void OnMouseUpAsButton()
     {
-        Explosion();
+        Explode();
     }
 
-    private void Explosion()
+    private void Explode()
     {
         if (Random.Range(0f, _fullChance) <= _disintegrationChance)
         {
             Disintegration();
         }
 
-        ExplosionWave();
         Destroy(gameObject);
-    }
-
-    private void ExplosionWave()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
-
-        foreach (Collider collider in hits)
-        {
-            if (collider.TryGetComponent(out Cube cube))
-            {
-                cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
-            }
-        }
     }
 
     private void Disintegration()
@@ -69,11 +57,9 @@ public class Cube : MonoBehaviour
         {
             var newCube = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
 
-            Vector3 newScale = newCube.gameObject.transform.localScale /= _half;
+            newCube.GetNewCondition(_disintegrationChance);
 
-            newCube.gameObject.transform.localScale = newScale;
-
-            newCube.GetDisintegrationChance(_disintegrationChance);
+            newCube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
     }
 }

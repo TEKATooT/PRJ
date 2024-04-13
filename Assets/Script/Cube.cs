@@ -42,7 +42,21 @@ public class Cube : MonoBehaviour
             Disintegrate();
         }
 
+        ExplosiveWave();
         Destroy(gameObject);
+    }
+
+    private void ExplosiveWave()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
+
+        foreach (Collider collider in hits)
+        {
+            if (collider.TryGetComponent(out Cube cube))
+            {
+                cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+            }
+        }
     }
 
     private void Disintegrate()
@@ -58,8 +72,6 @@ public class Cube : MonoBehaviour
             var newCube = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
 
             newCube.GetNewCondition(_disintegrationChance);
-
-            newCube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
         }
     }
 }

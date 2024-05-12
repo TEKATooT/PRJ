@@ -38,11 +38,10 @@ public class Cube : MonoBehaviour
     private void Explode()
     {
         if (Random.Range(0f, _fullChance) <= _disintegrationChance)
-        {
             Disintegrate();
-        }
+        else
+            ExplosiveWave();
 
-        ExplosiveWave();
         Destroy(gameObject);
     }
 

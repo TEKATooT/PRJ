@@ -9,12 +9,13 @@ public class Cube : MonoBehaviour
     [SerializeField] private float _explosionRadius;
     [SerializeField] private Color _needColor;
 
+    private const float _half = 2;
     private const float _fullChance = 100;
 
     private Rigidbody _rigidBody;
     private Renderer _renderer;
-    private float _half = 2;
     private float _disintegrationChance = 100;
+    private float _iteration = 1;
 
     private void Start()
     {
@@ -23,10 +24,12 @@ public class Cube : MonoBehaviour
         _renderer.material.color = Random.ColorHSV();
     }
 
-    public void GetNewCondition(float disintegrationChance)
+    public void GetNewCondition(float disintegrationChance, float iteration)
     {
         _disintegrationChance = disintegrationChance;
+        _iteration = iteration;
 
+        _iteration++;
         transform.localScale /= _half;
     }
 
@@ -53,7 +56,13 @@ public class Cube : MonoBehaviour
         {
             if (collider.TryGetComponent(out Cube cube))
             {
-                cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+                Vector3 gameObjectPosition = new Vector3(transform.position.z, transform.position.y, transform.position.z);
+                Vector3 cubePosition = new Vector3(cube.transform.position.z, cube.transform.position.y, cube.transform.position.z);
+
+                float cubeDistance = Vector3.Distance(gameObjectPosition, cubePosition);
+
+                if (cubeDistance != 0)
+                    cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce * _iteration / cubeDistance, transform.position, _explosionRadius * _iteration);
             }
         }
     }
@@ -70,7 +79,7 @@ public class Cube : MonoBehaviour
         {
             var newCube = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
 
-            newCube.GetNewCondition(_disintegrationChance);
+            newCube.GetNewCondition(_disintegrationChance, _iteration);
         }
     }
 }

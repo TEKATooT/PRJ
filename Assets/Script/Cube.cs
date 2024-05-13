@@ -56,10 +56,7 @@ public class Cube : MonoBehaviour
         {
             if (collider.TryGetComponent(out Cube cube))
             {
-                Vector3 gameObjectPosition = new Vector3(transform.position.z, transform.position.y, transform.position.z);
-                Vector3 cubePosition = new Vector3(cube.transform.position.z, cube.transform.position.y, cube.transform.position.z);
-
-                float cubeDistance = Vector3.Distance(gameObjectPosition, cubePosition);
+                float cubeDistance = Vector3.Distance(transform.position, cube.transform.position);
 
                 if (cubeDistance != 0)
                     cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce * _iteration / cubeDistance, transform.position, _explosionRadius * _iteration);

@@ -1,82 +1,44 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Renderer))]
 public class Cube : MonoBehaviour
 {
+    private const float _half = 2;
+
     [SerializeField] private Cube _cubePrefab;
-    [SerializeField] private float _explosionForce;
-    [SerializeField] private float _explosionRadius;
     [SerializeField] private Color _needColor;
 
-    private const float _half = 2;
-    private const float _fullChance = 100;
+    public event UnityAction<Cube> Exploded;
 
-    private Rigidbody _rigidBody;
     private Renderer _renderer;
-    private float _disintegrationChance = 100;
+
     private float _iteration = 1;
+    private float _explosionForce = 500;
+    private float _explosionRadius = 25;
+    private float _disintegrationChance = 100;
 
     private void Start()
     {
-        _rigidBody = GetComponent<Rigidbody>();
         _renderer = GetComponent<Renderer>();
         _renderer.material.color = Random.ColorHSV();
     }
+
+    public float Iteration => _iteration;
+    public float ExplosionForce => _explosionForce;
+    public float ExplosionRadius => _explosionRadius;
+    public float DisintegrationChance => _disintegrationChance;
 
     public void GetNewCondition(float disintegrationChance, float iteration)
     {
         _disintegrationChance = disintegrationChance;
         _iteration = iteration;
 
-        _iteration++;
         transform.localScale /= _half;
     }
 
     private void OnMouseUpAsButton()
     {
-        Explode();
-    }
-
-    private void Explode()
-    {
-        if (Random.Range(0f, _fullChance) <= _disintegrationChance)
-            Disintegrate();
-        else
-            ExplosiveWave();
-
-        Destroy(gameObject);
-    }
-
-    private void ExplosiveWave()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
-
-        foreach (Collider collider in hits)
-        {
-            if (collider.TryGetComponent(out Cube cube))
-            {
-                float cubeDistance = Vector3.Distance(transform.position, cube.transform.position);
-
-                if (cubeDistance != 0)
-                    cube.gameObject.GetComponent<Rigidbody>().AddExplosionForce(_explosionForce * _iteration / cubeDistance, transform.position, _explosionRadius * _iteration);
-            }
-        }
-    }
-
-    private void Disintegrate()
-    {
-        int minPiecesQuantity = 2;
-        int maxPiecesQuantity = 5;
-
-        int piecesQuantity = Random.Range(minPiecesQuantity, maxPiecesQuantity);
-        _disintegrationChance = _disintegrationChance / _half;
-
-        for (int i = 0; i < piecesQuantity; i++)
-        {
-            var newCube = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
-
-            newCube.GetNewCondition(_disintegrationChance, _iteration);
-        }
+        Exploded.Invoke(this);
     }
 }

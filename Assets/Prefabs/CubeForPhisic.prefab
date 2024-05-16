@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6986722425044019712}
   - component: {fileID: 3350529473696556151}
   - component: {fileID: 6784589424009198029}
+  - component: {fileID: -1866319776633282446}
+  - component: {fileID: 1784387712469168683}
   m_Layer: 0
   m_Name: CubeForPhisic
   m_TagString: Untagged
@@ -49,8 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cubePrefab: {fileID: 4578890603643928677}
-  _explosionForce: 5000
-  _explosionRadius: 50
   _needColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!33 &922247979920994660
 MeshFilter:
@@ -150,3 +150,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &-1866319776633282446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870998917022344725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d5615035e3004b468a4497e30240839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _separation: {fileID: 1784387712469168683}
+--- !u!114 &1784387712469168683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870998917022344725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee5f293c56e26643952b6567e7090ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cubePrefab: {fileID: 4578890603643928677}

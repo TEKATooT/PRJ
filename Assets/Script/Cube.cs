@@ -4,10 +4,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Renderer))]
 public class Cube : MonoBehaviour
 {
-    private const float _half = 2;
-
     [SerializeField] private Cube _cubePrefab;
     [SerializeField] private Color _needColor;
+
+    private const float _half = 2;
 
     private Renderer _renderer;
 

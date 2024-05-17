@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    private const float _fullChance = 100;
-
     [SerializeField] private Separator _separation;
+
+    private const float _fullChance = 100;
 
     private Cube _cube;
 

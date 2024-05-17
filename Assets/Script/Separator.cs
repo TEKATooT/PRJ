@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Separator : MonoBehaviour
 {
-    private const float _half = 2;
-
     [SerializeField] private Cube _cubePrefab;
+
+    private const float _half = 2;
 
     public void Disintegrate(Cube cube)
     {

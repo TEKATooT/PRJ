@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Separation : MonoBehaviour
+public class Separator : MonoBehaviour
 {
     private const float _half = 2;
 

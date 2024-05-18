@@ -30,18 +30,22 @@ public class CubesSpawner : MonoBehaviour
         {
             Transform newPosition = GetPosition();
 
-            _newColoredCube = _pool.Get(newPosition.position);
+            ColoredCube newColoredCube = _pool.Get(newPosition.position);
 
             float randomLifeTime = Random.Range(_minCubeLifeTime, _maxCubeLifeTime);
-            
-            //Invoke(nameof(Release), randomLifeTime);
+
+            StartCoroutine(Release(newColoredCube, randomLifeTime));
 
             yield return _second;
         }
     }
 
-    private void Release()
+    private IEnumerator Release(ColoredCube newColoredCube, float randomLifeTime)
     {
-        _pool.Release(_newColoredCube);
+        WaitForSeconds seconds = new WaitForSeconds(randomLifeTime);
+
+        yield return seconds;
+
+        _pool.Release(newColoredCube);
     }
 }

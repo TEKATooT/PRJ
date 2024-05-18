@@ -6,7 +6,6 @@ public class ObjectsPool : MonoBehaviour
     [SerializeField] private ColoredCube _coloredCube;
 
     private ObjectPool<ColoredCube> _pool;
-    private WaitForSeconds _releaseDelay = new WaitForSeconds(10);
 
     private int _minPoolSize = 50;
     private int _maxPoolSize = 100;

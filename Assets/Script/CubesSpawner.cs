@@ -5,11 +5,8 @@ public class CubesSpawner : MonoBehaviour
 {
     [SerializeField] private ObjectsPool _pool;
     [SerializeField] private Transform[] _spawenPoints;
+    [SerializeField] private CubeLifeCycle _cubeLifeCycle;
 
-    private readonly float _minCubeLifeTime = 2;
-    private readonly float _maxCubeLifeTime = 5;
-
-    private ColoredCube _newColoredCube;
     private WaitForSeconds _second = new WaitForSeconds(1);
 
     private void Start()
@@ -32,20 +29,9 @@ public class CubesSpawner : MonoBehaviour
 
             ColoredCube newColoredCube = _pool.Get(newPosition.position);
 
-            float randomLifeTime = Random.Range(_minCubeLifeTime, _maxCubeLifeTime);
-
-            StartCoroutine(Release(newColoredCube, randomLifeTime));
+            _cubeLifeCycle.TakeCube(newColoredCube);
 
             yield return _second;
         }
-    }
-
-    private IEnumerator Release(ColoredCube newColoredCube, float randomLifeTime)
-    {
-        WaitForSeconds seconds = new WaitForSeconds(randomLifeTime);
-
-        yield return seconds;
-
-        _pool.Release(newColoredCube);
     }
 }

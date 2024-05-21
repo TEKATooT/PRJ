@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -30,7 +31,7 @@ public class ObjectsPool : MonoBehaviour
     public ColoredCube Get(Vector3 transform)
     {
         ColoredCube newColoredCube = _pool.Get();
-
+        
         newColoredCube.transform.position = transform;
 
         return newColoredCube;

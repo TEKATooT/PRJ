@@ -123,6 +123,74 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &107810266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 118.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.9147143
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959125745922228692, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874440252950264954, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+      propertyPath: m_Name
+      value: ColoredCube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+--- !u!114 &107810267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1940062304388943274, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+  m_PrefabInstance: {fileID: 107810266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ceaa540c354533488e225d61efdbeac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &139466349
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 139466351}
   - component: {fileID: 139466350}
-  - component: {fileID: 139466352}
-  - component: {fileID: 139466353}
   m_Layer: 0
   m_Name: CubesSpawner
   m_TagString: Untagged
@@ -154,13 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e36b628c96a3444a29470f5a6a5cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pool: {fileID: 139466352}
+  _pool: {fileID: 107810267}
   _spawenPoints:
   - {fileID: 139466351}
   - {fileID: 1332490771}
   - {fileID: 893971967}
   - {fileID: 848082445}
-  _cubeLifeCycle: {fileID: 139466353}
 --- !u!4 &139466351
 Transform:
   m_ObjectHideFlags: 0
@@ -179,32 +244,6 @@ Transform:
   - {fileID: 848082445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &139466352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139466349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ceaa540c354533488e225d61efdbeac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coloredCube: {fileID: 7979038481835305168, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
---- !u!114 &139466353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139466349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80153924df7b57a408db2fd59ac806ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pool: {fileID: 139466352}
 --- !u!1 &148635304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,3 +1665,4 @@ SceneRoots:
   - {fileID: 282092963}
   - {fileID: 139466351}
   - {fileID: 1751441161}
+  - {fileID: 107810266}

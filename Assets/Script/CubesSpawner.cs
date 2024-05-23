@@ -1,11 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CubesSpawner : MonoBehaviour
 {
     [SerializeField] private ObjectsPool _pool;
     [SerializeField] private Transform[] _spawenPoints;
-    [SerializeField] private CubeLifeCycle _cubeLifeCycle;
 
     private WaitForSeconds _second = new WaitForSeconds(1);
 
@@ -14,22 +14,20 @@ public class CubesSpawner : MonoBehaviour
         StartCoroutine(Generate());
     }
 
-    private Transform GetPosition()
+    private Vector3 GetPosition()
     {
-        int position = Random.Range(0, _spawenPoints.Length);
+        int randomPosition = Random.Range(0, _spawenPoints.Length);
 
-        return _spawenPoints[position];
+        return _spawenPoints[randomPosition].position;
     }
 
     private IEnumerator Generate()
     {
         while (true)
         {
-            Transform newPosition = GetPosition();
+            ColoredCube newColoredCube = _pool.Get();
 
-            ColoredCube newColoredCube = _pool.Get(newPosition.position);
-
-            _cubeLifeCycle.TakeCube(newColoredCube);
+            newColoredCube.transform.position = GetPosition();
 
             yield return _second;
         }

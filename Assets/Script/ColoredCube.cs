@@ -1,18 +1,25 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System.Collections;
 
 [RequireComponent(typeof(Renderer))]
 public class ColoredCube : MonoBehaviour
 {
+    private ObjectsPool _pool;
     private Renderer _renderer;
 
-    private bool _isColored = false;
+    private readonly float _minCubeLifeTime = 2;
+    private readonly float _maxCubeLifeTime = 5;
 
-    public event UnityAction<ColoredCube> Ñolored;
+    private bool _isColored = false;
 
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
+    }
+
+    private void Start()
+    {
+        _pool = GetComponent<ObjectsPool>();
     }
 
     private void OnEnable()
@@ -24,16 +31,29 @@ public class ColoredCube : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!_isColored)
+        if (collision.collider.TryGetComponent(out Plane plane) && _isColored == false)
         {
-            if (collision.collider.TryGetComponent(out Plane plane))
-            {
-                _renderer.material.color = plane.Color;
+            _renderer.material.color = plane.Color;
 
-                _isColored = true;
+            _isColored = true;
 
-                Ñolored.Invoke(this);
-            }
+            SetTimeRealease();
         }
+    }
+
+    private void SetTimeRealease()
+    {
+        float randomLifeTime = Random.Range(_minCubeLifeTime, _maxCubeLifeTime);
+
+        StartCoroutine(Release(randomLifeTime));
+    }
+
+    private IEnumerator Release(float randomLifeTime)
+    {
+        WaitForSeconds seconds = new WaitForSeconds(randomLifeTime);
+
+        yield return seconds;
+
+        _pool.Release(this);
     }
 }

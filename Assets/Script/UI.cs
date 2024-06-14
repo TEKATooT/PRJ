@@ -8,10 +8,11 @@ public class UI : MonoBehaviour
 
     [SerializeField] private Text _allCubes;
     [SerializeField] private Text _activeCubes;
-    private int _total—reatedallCubes = 0;
 
     [SerializeField] private Text _allBombs;
     [SerializeField] private Text _activeBombs;
+
+    private int _total—reatedallCubes = 0;
     private int _total—reatedallBombs = 0;
 
     private void OnEnable()

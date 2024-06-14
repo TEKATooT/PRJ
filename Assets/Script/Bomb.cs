@@ -15,13 +15,13 @@ public class Bomb : MonoBehaviour
     private void OnEnable()
     {
         _renderer = GetComponent<Renderer>();
+
+        _renderer.material = _startMaterial;
     }
 
     private void OnDisable()
     {
         Explode();
-
-        _renderer.material.color = Color.black;
     }
 
     private void Update()

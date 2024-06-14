@@ -4,7 +4,7 @@ public class CarouselsManagement : MonoBehaviour
 {
     [SerializeField] private Swing _swing;
     [SerializeField] private Catapult _catapult;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private CubesSpawner _spawner;
 
     private void Update()
     {

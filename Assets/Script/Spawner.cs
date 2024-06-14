@@ -1,17 +1,27 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class CubesSpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    [SerializeField] private ObjectsPool _pool;
+    [SerializeField] private CubesPool _cubePool;
+    [SerializeField] private BombsPool _bombPool;
     [SerializeField] private Transform[] _spawenPoints;
 
     private WaitForSeconds _second = new WaitForSeconds(1);
 
+    private void OnEnable()
+    {
+        _cubePool.TurnedOff += CreateBomb;
+    }
+
     private void Start()
     {
         StartCoroutine(Generate());
+    }
+
+    private void OnDisable()
+    {
+        _cubePool.TurnedOff -= CreateBomb;
     }
 
     private Vector3 GetPosition()
@@ -25,11 +35,18 @@ public class CubesSpawner : MonoBehaviour
     {
         while (true)
         {
-            ColoredCube newColoredCube = _pool.Get();
+            ColoredCube newColoredCube = _cubePool.Get();
 
             newColoredCube.transform.position = GetPosition();
 
             yield return _second;
         }
+    }
+
+    private void CreateBomb(Transform transform)
+    {
+        Bomb bomb = _bombPool.Get();
+
+        bomb.transform.position = transform.position;
     }
 }

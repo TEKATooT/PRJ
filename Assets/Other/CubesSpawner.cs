@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class CubesSpawner : MonoBehaviour
 {
     [SerializeField] private Cube _cube;
 

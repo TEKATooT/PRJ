@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField] private CubesPool _cubePool;
-    [SerializeField] private BombsPool _bombPool;
+    [SerializeField] private Pools _pool;
 
     [SerializeField] private Text _allCubes;
     [SerializeField] private Text _activeCubes;
@@ -17,20 +16,20 @@ public class UI : MonoBehaviour
 
     private void OnEnable()
     {
-        _cubePool.Created += AddCubeCount;
-        _bombPool.Created += AddBombCount;
+        _pool.CubeCreated += AddCubeCount;
+        _pool.BombCreated += AddBombCount;
     }
 
     private void OnDisable()
     {
-        _cubePool.Created -= AddCubeCount;
-        _bombPool.Created -= AddBombCount;
+        _pool.CubeCreated -= AddCubeCount;
+        _pool.BombCreated -= AddBombCount;
     }
 
     private void FixedUpdate()
     {
-        _activeCubes.text = ("Active " + _cubePool.CountActive.ToString());
-        _activeBombs.text = ("Active bomb " + _bombPool.CountActive.ToString());
+        _activeCubes.text = ("Active " + _pool.CountCubesActive.ToString());
+        _activeBombs.text = ("Active bomb " + _pool.CountBombsActive.ToString());
     }
 
     private void AddCubeCount()

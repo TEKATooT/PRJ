@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -212,7 +212,6 @@ GameObject:
   m_Component:
   - component: {fileID: 139466351}
   - component: {fileID: 139466350}
-  - component: {fileID: 139466353}
   - component: {fileID: 139466352}
   m_Layer: 0
   m_Name: Spawner
@@ -233,8 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3e36b628c96a3444a29470f5a6a5cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePool: {fileID: 139466353}
-  _bombPool: {fileID: 139466352}
+  _pools: {fileID: 139466352}
   _spawenPoints:
   - {fileID: 139466351}
   - {fileID: 1332490771}
@@ -267,23 +265,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 139466349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15a943cfb40bde49b9cd6d5a69b1ece, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bomb: {fileID: 6515429674926079181, guid: f77c604b845458c40a1cedc52156038b, type: 3}
---- !u!114 &139466353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139466349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ceaa540c354533488e225d61efdbeac, type: 3}
+  m_Script: {fileID: 11500000, guid: 54624c498546fbb429be84f0e783796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _coloredCube: {fileID: 7979038481835305168, guid: 4a218f560ee2e764ebf8187b185e67cf, type: 3}
+  _bomb: {fileID: 6515429674926079181, guid: f77c604b845458c40a1cedc52156038b, type: 3}
 --- !u!1 &148635304
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,8 +527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c0a82bd1705374492eba3f516ef898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePool: {fileID: 139466353}
-  _bombPool: {fileID: 139466352}
+  _pool: {fileID: 139466352}
   _allCubes: {fileID: 1404329839}
   _activeCubes: {fileID: 81936504}
   _allBombs: {fileID: 831619727}
